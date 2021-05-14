@@ -16,8 +16,8 @@ print(tf.__version__)
 #Dentro del conjunto, 60 mil imagenes son utilizadas para entrenar a la red neuronal
 # Y 10 mil, se uzan para evaluar su precición al clasificar las imagenes.
 
-data = keras.datasets.fashion_mnist
-(train_images, train_labels), (test_images, test_labels) = data.load_data()
+fashion_mnist = tf.keras.datasets.fashion_mnist
+(train_images, train_labels), (test_images, test_labels) = fashion_mnist.load_data()
 
 # La imagenes cuentan con tain:labels y test_labels que indican el nombre  de cada imagen.
 # Se crea una lista que guarda el nombre de las etiquetas que se utilizarán en las imagenes de acuerdo a su indice 
@@ -90,6 +90,9 @@ print(f'Tested Accuracy is: {test_acc}')
 #La prueba se realiza sobre las primeras 10 imagenes .
 #El programa mostrara la imagen en cuestión y su etiqueta de nombre asociada en la parte inferior, 
 # mientras que la predicción realizada es mostrada en la parte superiór. 
+#Para esto utilizamos un ciclo ligeramente modificado de los usados durante el desarrollo
+#este ciclo nos permite ver las primeras 10 imagenes del test_image (conjunto de pruebas)
+#con su predicción y el nombre asociado a la imagen.
 prediction =  model.predict(test_images)
 for i in range(10): 
     plt.grid(False)
@@ -97,3 +100,27 @@ for i in range(10):
     plt.xlabel(f"Actual Image: {class_names[test_labels[i]]}")
     plt.title(f"Prediction: {class_names[np.argmax(prediction[i])]}")
     plt.show()
+
+
+#DERECHO DE AUTOR
+# MIT License
+#
+# Copyright (c) 2017 François Chollet
+#
+# Permission is hereby granted, free of charge, to any person obtaining a
+# copy of this software and associated documentation files (the "Software"),
+# to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense,
+# and/or sell copies of the Software, and to permit persons to whom the
+# Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+# FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.  
